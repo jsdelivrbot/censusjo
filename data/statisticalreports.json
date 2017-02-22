@@ -1,0 +1,9 @@
+[
+  {"id": 1, "name_ar": "أعداد المباني", "name_en": "Building Count"},
+  {"id": 2, "name_ar": "أعداد المساكن", "name_en": "Housing Count"},
+  {"id": 3, "name_ar": "أعداد الأسر", "name_en": "Family Count"},
+  {"id": 4, "name_ar": "أعداد السكان", "name_en": "Population Count"},
+  {"id": 5, "name_ar": "أعداد الأردنيين", "name_en": "Jordanian Population"},
+  {"id": 6, "name_ar": "أعداد الغير أردنيين", "name_en": "Non Jordanian Population"},
+  {"id": 7, "name_ar": "عدد المنشآت", "name_en": "Establishments Count"}
+]

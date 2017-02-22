@@ -1,0 +1,28 @@
+<div class="headerbar"><a class="menutoggle"><i class="fa fa-bars"></i></a>
+    <search-layers></search-layers>
+    <div class="header-right">
+
+        <ul class="headermenu">
+            <li>
+
+            </li>
+            <li>
+
+            </li>
+            <li>
+                <div class="btn-group">
+                    <a class="btn btn-default tp-icon" ui-sref="login">
+                        <i class="fa fa-sign-in"></i> {{'Login' | translate}}
+                    </a>
+                </div>
+            </li>
+            <li>
+                <button class="btn btn-default tp-icon" ng-click="ChangeLang()">{{'BUTTON_LANG' | translate}}</button>
+            </li>
+
+        </ul>
+    </div>
+    <!-- header-right -->
+
+</div>
+<!-- headerbar -->

@@ -1,0 +1,163 @@
+<form class="form-inline active" ng-submit="SubmitAdvancedSearch()">
+    <div class="form-group">
+        <select id="searchTypeDropdown" class="form-control ddlSlim ddlNiceSelect"
+                ng-options="item.id as item[getField('fieldName')] for item in searchTypesList"
+                ng-change="OnSearchTypeChanged()"
+                ng-model="selectedSearchType"
+                >
+            <option value="">{{getField('SearchTypeText')}}</option>
+        </select>
+        <span uib-popover-template="'requiredDropdown.html'"
+        popover-is-open="invalid.advSearchTypeSelected"
+        popover-placement="bottom"
+        popover-enable="invalid.advSearchTypeSelected"></span>
+        <required-dropdown></required-dropdown>
+    </div>
+    <div ng-show="selectedSearchType == 3" class="form-group">
+        <select id="chaptersDropdown" class="form-control ddlSlim ddlNiceSelect"
+                ng-options="item.CHAPTER_NO as item.CHAPTER_NAME for item in indicatorChapters"
+                ng-model="selectedIndicatorChapter"
+                ng-change="OnIndicatorChapterChanged()">
+            <option value="">{{getField('indicatorText')}}</option>
+        </select>
+        <span uib-popover-template="'requiredDropdown.html'"
+              popover-is-open="invalid.advIndicatorChapter"
+              popover-placement="bottom"
+              popover-enable="invalid.advIndicatorChapter"></span>
+    </div>
+    <div class="spacenext" ng-show="selectedSearchType == 3 && selectedIndicatorChapter != undefined"></div>
+    <div ng-show="selectedSearchType == 3 && selectedIndicatorChapter != undefined" class="form-group">
+        <select id="indicatorDropdown" class="form-control ddlSlim ddlNiceSelect"
+                ng-options="item as item.INDICATOR for item in indicatorsList"
+                ng-model="selectedIndicator"
+                ng-change="OnIndicatorChanged()">
+            <option value="">{{getField('indicatorNameText')}}</option>
+        </select>
+        <span uib-popover-template="'requiredDropdown.html'"
+              popover-is-open="invalid.advIndicator"
+              popover-placement="bottom"
+              popover-enable="invalid.advIndicator"></span>
+    </div>
+    <div class="form-group srchLayer1">
+        <label class="sr-only" for="govDropDown">{{getField('GovernorateText')}}</label>
+
+        <select id="govDropDown" class="form-control ddlSlim ddlNiceSelect"
+                ng-options="item as item.attributes[getField('LayerAttributeName')] for item in governoratesSearch"
+                ng-change="OnGovernorateChanged(selectedGov)"
+                ng-model="selectedGov">
+            <option value="">{{getField('GovernorateText')}}</option>
+        </select>
+    </div>
+    <div class="spacenext srchLayer2"></div>
+    <div class="form-group srchLayer2">
+        <label class="sr-only" for="liwaDropdown">{{getField('SubGovernorateText')}}</label>
+        <select id="liwaDropdown" class="form-control ddlSlim ddlNiceSelect"
+                ng-options="item as item.attributes[getField('LayerAttributeName')] for item in districtsSearch"
+                ng-change="OnDistirctChanged(selectedDistrict)"
+                ng-model="selectedDistrict">
+            <option value="">{{getField('SubGovernorateText')}}</option>
+        </select>
+    </div>
+    <div class="spacenext srchLayer3"></div>
+    <div class="form-group srchLayer3">
+        <label class="sr-only" for="subdistrictDropdown">{{getField('DistrictText')}}</label>
+        <select id="subdistrictDropdown" class="form-control ddlSlim ddlNiceSelect"
+                ng-options="item as item.attributes[getField('LayerAttributeName')] for item in subDistrictsSearch"
+                ng-change="OnSubDistrictChanged(selectedSubDistrict)"
+                ng-model="selectedSubDistrict">
+            <option value="">{{getField('DistrictText')}}</option>
+        </select>
+    </div>
+    <div class="spacenext srchLayer4"></div>
+    <div class="form-group srchLayer4">
+        <label class="sr-only" for="localityDropdown">{{getField('LocalityText')}}</label>
+        <select id="localityDropdown" class="form-control ddlSlim ddlNiceSelect"
+                ng-options="item as item.attributes[getField('LayerAttributeName')] for item in localitiesSearch"
+                ng-change="OnLocalityChanged(selectedLocality)"
+                ng-model="selectedLocality">
+            <option value="">{{getField('LocalityText')}}</option>
+        </select>
+    </div>
+    <div class="spacenext srchLayer5"></div>
+    <div class="form-group srchLayer5">
+        <label class="sr-only" for="regionDropdown">{{getField('RegionText')}}</label>
+        <select id="regionDropdown" class="form-control ddlSlim ddlNiceSelect"
+                ng-options="item as item.attributes[getField('LayerAttributeName')] for item in regionsSearch"
+                ng-change="OnRegionChanged(selectedRegion)"
+                ng-model="selectedRegion">
+            <option value="">{{getField('RegionText')}}</option>
+        </select>
+    </div>
+    <div class="spacenext srchLayer6"></div>
+    <div class="form-group srchLayer6">
+        <label class="sr-only" for="neighbourhoodDropdown">{{getField('NeighbourhoodText')}}</label>
+        <select id="neighbourhoodDropdown" class="form-control ddlSlim ddlNiceSelect"
+                ng-options="item as item.attributes[getField('LayerAttributeName')] for item in neighbourhoodsSearch"
+                ng-change="OnNeighbourhoodChanged(selectedNH)"
+                ng-model="selectedNH">
+            <option value="">{{getField('NeighbourhoodText')}}</option>
+        </select>
+    </div>
+    <div ng-show="selectedSearchType == 1" style="width: 300px" class="form-group">
+        <label class="sr-only" for="advServicesTypes">{{ServiceTypesText}}</label>
+        <select id="advServicesTypes" ng-options="item.CODE as item[getField('serviceName')] for item in servicesList"
+                ng-model="selectedServices" class="form-control servicesSearch" multiple="multiple"
+                ng-change="onAdvServiceChanged()"
+                popover-is-open="invalid.advServiceTypeSelected"
+                popover-placement="bottom"
+                popover-enable="invalid.advServiceTypeSelected"
+                uib-popover-template="'requiredDropdown.html'">
+        </select>
+    </div>
+    <div class="form-group typeahead-demo">
+        <label class="sr-only">{{getField('SearchText')}}</label>
+
+        <input ng-show="selectedSearchType == 1" type="text" ng-model="serviceTextSearch"
+               placeholder="{{getField('SearchText')}}..."
+               uib-typeahead="serviceObj as serviceObj.EST_NAME for serviceObj in SearchLayersDropDown($viewValue)"
+               typeahead-on-select="ZoomToLandmark($item, $model, $label, $event)"
+               typeahead-popup-template-url="customServicesTemplate.html" class="form-control"/>
+
+        <input ng-show="selectedSearchType == 2" type="text" ng-model="selectedSearch"
+               placeholder="{{getField('SearchText')}}..."
+               uib-typeahead="layerInfo as layerInfo.attributes[getField('LayerAttributeName')] for layerInfo in SearchLayersDropDown($viewValue)"
+               typeahead-on-select="ZoomToSelected($item, $model, $label, $event)"
+               typeahead-popup-template-url="customPopupTemplate.html" class="form-control"/>
+
+    </div>
+    <button class="btn btn-default sxc" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+</form>
+<script type="text/ng-template" id="customPopupTemplate.html">
+    <div class="custom-popup-wrapper"
+         ng-style="{top: position().top+'px', left: position().left+'px'}"
+         style="display: block;"
+         ng-show="isOpen() && !moveInProgress"
+         aria-hidden="{{!isOpen()}}">
+        <p class="message">{{TopDropDownSearchTitle}}</p>
+
+        <ul class="dropdown-menu" role="listbox">
+            <li ng-repeat="match in matches track by $index" ng-class="{active: isActive($index) }"
+                ng-mouseenter="selectActive($index)" ng-click="selectMatch($index)" role="option" id="{{::match.id}}">
+                <div uib-typeahead-match index="$index" match="match" query="query" template-url="templateUrl"></div>
+            </li>
+        </ul>
+    </div>
+</script>
+
+<script type="text/ng-template" id="customServicesTemplate.html">
+    <div class="custom-popup-wrapper"
+         ng-style="{top: position().top+'px', left: position().left+'px'}"
+         style="display: block;"
+         ng-show="isOpen() && !moveInProgress"
+         aria-hidden="{{!isOpen()}}">
+        <p class="message">{{TopDropDownSearchTitle}}</p>
+
+        <ul class="dropdown-menu" role="listbox">
+            <li ng-repeat="match in matches track by $index" ng-class="{active: isActive($index) }"
+                ng-mouseenter="selectActive($index)" ng-click="selectMatch($index)" role="option" id="{{::match.id}}">
+                <img ng-src="img/icons/service_{{match.model.ACTIVITY_CODE2}}.svg"/>
+                <span uib-typeahead-match index="$index" match="match" query="query" template-url="templateUrl"></span>
+            </li>
+        </ul>
+    </div>
+</script>

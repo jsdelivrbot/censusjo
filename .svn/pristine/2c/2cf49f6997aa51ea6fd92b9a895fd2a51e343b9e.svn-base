@@ -1,0 +1,182 @@
+/**
+ * Created by mmajali on 10/19/16.
+ */
+'use strict'
+
+angular.module('gisapp')
+    .directive('sidePanel', function ($rootScope, esriLib) {
+        return {
+            restrict: 'E',
+            templateUrl: 'views/tpl/sidepanel.tpl.html',
+            controllerAs: 'sidePanel',
+            controller: function ($rootScope, $scope) {
+
+                /*
+                 $scope.searchType
+                 1: landmarks,
+                 2: streets
+                 */
+                $scope.searchType = 1;
+                $scope.resultNos = "(0)";
+
+                $scope.indicatorGridOptions = {
+                    enableGridMenu: true,
+                    enableSorting: true,
+                    exporterCsvFilename: 'indicators.csv',
+                    /*exporterPdfDefaultStyle: {fontSize: 9},
+                    exporterPdfTableStyle: {margin: [30, 30, 30, 30]},
+                    exporterPdfTableHeaderStyle: {fontSize: 10, bold: true, italics: true, color: 'red'},
+                    exporterPdfHeader: { text: "My Header", style: 'headerStyle' },
+                    exporterPdfFooter: function ( currentPage, pageCount ) {
+                        return { text: currentPage.toString() + ' of ' + pageCount.toString(), style: 'footerStyle' };
+                    },
+                    exporterPdfCustomFormatter: function ( docDefinition ) {
+                        docDefinition.styles.headerStyle = { fontSize: 22, bold: true };
+                        docDefinition.styles.footerStyle = { fontSize: 10, bold: true };
+                        return docDefinition;
+                    },
+                    exporterPdfOrientation: 'portrait',
+                    exporterPdfPageSize: 'LETTER',
+                    exporterPdfMaxGridWidth: 500,
+                    */
+                    exporterCsvLinkElement: angular.element(document.querySelectorAll(".custom-csv-link-location")),
+                    columnDefs: [
+                        {name: "indicator", field: "GEOCODE"},
+                        {name: "value", field: "INDICATORVALUE"}
+                    ],
+                    data: []
+                };
+
+                $scope.GetLayerAttributeAliasName = function () {
+                    return $rootScope.layerAttributeAliasName;
+                };
+
+                $rootScope.$on('landmarksResultsLoaded', function (event, data) {
+                    $scope.searchType = 1;
+                    $scope.landmarksResult = data;
+                    $scope.resultNos = "({searchResultNo})".format({searchResultNo:data.length});
+                    openSearchResultsPanel();
+                });
+
+                $rootScope.$on('streetsResultsLoaded', function (event, data) {
+                    $scope.searchType = 2;
+                    $scope.streetsResult = data;
+                    $scope.resultNos = "({searchResultNo})".format({searchResultNo:data.length});
+                    openSearchResultsPanel();
+                });
+
+                $rootScope.$on('layersSearchResultsLoaded', function (event, data) {
+                    $scope.searchType = 3;
+                    $scope.layersInfo = data;
+                    $scope.resultNos = "({searchResultNo})".format({searchResultNo:data.length});
+                    openSearchResultsPanel();
+                });
+
+                $rootScope.$on('servicesNoLoaded', function(event, data){
+                    $scope.searchType = 4;
+                    $scope.servicesNoList = data;
+                    $scope.resultNos = "({searchResultNo})".format({searchResultNo:data.length});
+                    openSearchResultsPanel();
+                });
+
+                $rootScope.$on('resetAll', function(event, data){
+                   if(data){
+                       $scope.clearLists();
+                       $scope.indicatorGridOptions.data = [];
+                       $("#indicatorChart").html('');
+                       $scope.legendArray = [];
+                       $scope.resultNos = "(0)";
+                       $scope.pieChart.destroy();
+                   }
+                });
+
+                $scope.clearLists = function(){
+                    $scope.layersInfo = [];
+                    $scope.servicesNoList = [];
+                    $scope.streetsResult = [];
+                    $scope.landmarksResult = [];
+                };
+
+                $scope.zoomToLandMark = function (landMarkObj) {
+                    var point = esriLib.CreatePoint(landMarkObj.GPS_Y, landMarkObj.GPS_X, null);
+                    $rootScope.map.centerAndZoom(point, 18);
+                };
+
+                $scope.zoomToSelected = function(obj){
+                    switch (obj.geometry.type) {
+                        case "point":
+                            $rootScope.map.centerAndZoom(obj.geometry, 18);
+                            break;
+                        case "polygon":
+                            $rootScope.map.setExtent(obj.geometry.getExtent(), true);
+                            break;
+                        case "polyline":
+                            $rootScope.map.setExtent(obj.geometry.getExtent(), false);
+                            break;
+                    }
+                };
+
+                $rootScope.$on('legendLoaded', function (event, data) {
+                    $scope.legendArray = data;
+                });
+
+                $rootScope.$on('indicatorSearchSubmitted', function (event, data) {
+                    $scope.indicatorGridOptions.data = data;
+                });
+
+                $scope.pieChart;
+                $rootScope.$on('indicatorChartDataLoaded', function (event, chartObj) {
+                    try {
+                        $("#indicatorChart").html('');
+                        $scope.pieChart.destroy();
+                    } catch (ex) {
+
+                    }
+
+                    var total = _.reduce(chartObj.data, function (mem, num) {
+                        return mem + num;
+                    }, 0);
+
+                    var chartValues = _.map(chartObj.data, function (num) {
+                        return (num / total) * 100;
+                    });
+
+
+                    $("#indicatorChart").html('');
+                    var config = {
+                        type: 'pie',
+                        data: {
+                            datasets: [{
+                                data: chartObj.data,
+                                backgroundColor: chartObj.backgroundColor,
+                            }],
+                            labels: chartObj.labels
+                        },
+                        options: {
+                            responsive: true,
+                            legend: {
+                                display: false
+                            },
+                            tooltips: {
+                                enabled: true,
+                                callbacks: {
+                                    label: function (tooltipItem, data) {
+                                        var dataset = data.datasets[tooltipItem.datasetIndex];
+                                        var total = dataset.data.reduce(function (previousValue, currentValue, currentIndex, array) {
+                                            return previousValue + currentValue;
+                                        });
+                                        var currentValue = dataset.data[tooltipItem.index];
+                                        var precentage = Math.floor(((currentValue / total) * 100) + 0.5);
+                                        return data.labels[tooltipItem.index] + ' - ' + precentage + "%";
+                                    }
+                                }
+                            }
+                        }
+                    };
+
+                    var ctx = document.getElementById("indicatorChart").getContext("2d");
+                    $scope.pieChart = new Chart(ctx, config);
+                });
+            }
+        }
+    });

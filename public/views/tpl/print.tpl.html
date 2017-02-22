@@ -1,0 +1,25 @@
+<form class="form-inline centerAll" ng-submit="printMap()">
+    <div class="form-group">
+        <select id="ddlPrintTemplates"
+                ng-init="selectedPrintLayout = printLayouts[0]"
+                ng-options="item for item in printLayouts"
+                ng-model="selectedPrintLayout"
+                class="form-control">
+
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="ddlPrintFormat"></label>
+        <select id="ddlPrintFormat"
+                ng-init="selectedPrintFormat = printFormats[0]"
+                ng-options="item for item in printFormats"
+                ng-model="selectedPrintFormat"
+                class="form-control">
+
+        </select>
+    </div>
+    <div class="form-group">
+
+        <button class="btn btn-default sxc" type="submit"><i class="fa fa-print"></i></button>
+    </div>
+</form>

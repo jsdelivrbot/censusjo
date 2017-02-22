@@ -1,0 +1,74 @@
+<div class="wrapper_Top">
+    <div class="topMenuall">
+        <div class="logopanel"><img src="img/logo-2.svg" alt="logo"></div>
+        <div class="mainMenu">
+            <ul class="nav-tabs">
+                <li class="active"><a data-target="#dvAdvancedSearch" data-toggle="tab"> <span> <img
+                        src="img/sarchAdv.svg" alt="{{getField('AdvancedSearchText')}}"></span>{{getField('AdvancedSearchText')}}</a></li>
+                <li>
+                    <a data-target="#dvSearchNoServices" data-toggle="tab">
+                        <span> <img src="img/numbers.svg" alt="{{getField('ServicesNumberText')}}"></span>{{getField('ServicesNumberText')}}</a>
+                </li>
+                <li><a data-target="#dvSearchByDrawing" data-toggle="tab">
+                    <span> <img src="img/draws.svg" alt="{{getField('searchByDrawing')}}"></span>{{getField('searchByDrawing')}}</a>
+                </li>
+                <li>
+                    <a data-target="#dvPaintLayers" data-toggle="tab">
+                        <span> <img src="img/paint.svg" alt="{{getField('paintingLayers')}}"></span>
+                        {{getField('paintingLayers')}} </a>
+                </li>
+                <li>
+                    <a data-target="#dvPrinting" data-toggle="tab">
+                        <span> <i class="fa fa-print"></i></span> {{getField('PrintText')}}
+                    </a>
+                </li>
+                <li>
+                    <a data-target="#dvSearchPanel" data-toggle="tab">
+                        <span> <i class="fa fa-search"> </i> </span> </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="lang"><a href="#" ng-click="ChangeLang()">{{'BUTTON_LANG' | translate}}</a></div>
+        <div class="helps"><a target="_blank" href="/help.docx"> <i class="fa fa-question" aria-hidden="true"></i> </a></div>
+    </div>
+    <div class="sec-head">
+        <div class="headerbar">
+            <a class="menutoggle"><i class="fa fa-bars"></i></a>
+            <div class="contentMenu tab-content formAll">
+                <!-- advanced search -->
+                <div id="dvAdvancedSearch" class="tab-pane active">
+                    <advanced-search></advanced-search>
+                </div>
+
+                <!-- Number of services -->
+                <div id="dvSearchNoServices" class="tab-pane">
+                    <search-service-no></search-service-no>
+                </div>
+                <!-- Search by drawing -->
+                <div id="dvSearchByDrawing" class="tab-pane">
+                    <drawing-tools></drawing-tools>
+                </div>
+                <!-- measurement tools -->
+                <div id="dvMeasurementTools" class="tab-pane">
+                    <div class="form-group toolsdrew">
+
+                    </div>
+                </div>
+                <!-- painting layers -->
+                <div id="dvPaintLayers" class="tab-pane">
+                    <layers-color></layers-color>
+                </div>
+                <!-- printing panel -->
+                <div id="dvPrinting" class="tab-pane">
+                    <print></print>
+                </div>
+                <!-- search panel -->
+                <div id="dvSearchPanel" class="tab-pane">
+                    <general-search></general-search>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

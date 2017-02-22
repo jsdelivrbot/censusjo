@@ -1,0 +1,46 @@
+<form class="form-inline centerAll">
+    <div class="form-group">
+
+        <label class="" for="clrLayer">{{SelectLayerText}}</label>
+        <select id="clrLayer" ng-options="item.id as item[getField('DisplayLayers')] for item in lstLayers"
+               ng-model="clrSeclectedLayer" class="form-control">
+            <option value="">{{getField('SelectLayerText')}}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="sr-only" for="colorArea"> نوع الخدمات </label>
+        <select id="colorArea" ng-options="item as item[getField('fieldName')] for item in colorArea"
+                ng-model="clrSelectedArea" class="form-control">
+            <option value="">{{getField('selectColorArea')}}</option>
+        </select>
+    </div>
+    <!-- btn-group -->
+    <div class="form-group colorxc">
+        <color-picker options="colorPickerOptions" event-api="eventApi" ng-model="selectedColor"></color-picker>
+
+    </div>
+    <div class="form-group">
+    </div>
+    <!-- btn-group -->
+    <div class="form-group">
+        <label> {{getField('fontFamily')}} </label>
+        <select id="ddlFontFamily" ng-options="item for item in fontFamily" ng-change="changeFontFamily()"
+                ng-model="clrFontFamily" class="form-control">
+            <option value="">{{getField('SelectText')}}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label> {{getField('fontSize')}} </label>
+        <select id="ddlFontSize" ng-options="item for item in fontSize" ng-change="changeFontSize()"
+                ng-model="clrFontSize" class="form-control">
+            <option value="">{{getField('SelectText')}}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label> {{getField('fontWeight')}} </label>
+        <select id="ddlFontWeight" ng-options="item for item in fontWeight" ng-change="changeFontWeight()"
+                ng-model="clrFontWeight" class="form-control">
+            <option value="">{{getField('SelectText')}}</option>
+        </select>
+    </div>
+</form>

@@ -1,0 +1,22 @@
+<form class="form-inline centerAll">
+    <div class="form-group">
+
+        <label class="" for="clrLayer">{{SelectLayerText}}</label>
+        <select id="clrLayer" ng-options="item.id as item[getField('DisplayLayers')] for item in lstLayers"
+               ng-model="clrSeclectedLayer" class="form-control">
+            <option value="">{{getField('SelectLayerText')}}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="sr-only" for="colorArea"> نوع الخدمات </label>
+        <select id="colorArea" ng-options="item as item[getField('fieldName')] for item in colorArea"
+                ng-model="clrSelectedArea" class="form-control">
+            <option value="">{{getField('selectColorArea')}}</option>
+        </select>
+    </div>
+    <!-- btn-group -->
+    <div class="form-group colorxc">
+        <color-picker options="colorPickerOptions" event-api="eventApi" ng-model="selectedColor"></color-picker>
+
+    </div>
+</form>

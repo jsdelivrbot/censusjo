@@ -1,0 +1,70 @@
+/* 
+	$Author: majali $
+	$Id: usp_layers_getgeneralinfo.sql 15 2016-03-03 15:30:06Z majali $
+	$Rev: 15 $
+*/
+Create Or Replace Procedure usp_layers_getgeneralinfo
+	(
+		p_layerId integer,
+		p_code varchar2,
+		p_refCursor out SYS_REFCURSOR
+	) 
+	AS	
+	
+BEGIN
+	if p_layerId = 8 then
+		open p_refCursor for
+			select sum(EST_CNT) as EST_CNT, sum(HOU_CNT) as HOU_CNT,sum(OTH_CNT) as OTH_CNT,
+			sum(JO_CNT) as JO_CNT,sum(MEM_CNT) as MEM_CNT, sum(FM_CNT) as FM_CNT,sum(BLD_CNT) as BLD_CNT,
+			GOV_CODE as CODE 
+			from t_geo_agg
+			where GOV_CODE = p_code
+			group by GOV_CODE;
+	elsif p_layerId = 7 then
+		open p_refCursor for
+			select sum(EST_CNT) as EST_CNT, sum(HOU_CNT) as HOU_CNT,sum(OTH_CNT) as OTH_CNT,
+			sum(JO_CNT) as JO_CNT,sum(MEM_CNT) as MEM_CNT, sum(FM_CNT) as FM_CNT,sum(BLD_CNT) as BLD_CNT, 
+			LUAA_CODE as CODE
+			from t_geo_agg
+			where luaa_code = p_code
+			group by LUAA_CODE;
+	elsif p_layerId = 6 then
+		open p_refCursor for
+			select sum(EST_CNT) as EST_CNT, sum(HOU_CNT) as HOU_CNT,sum(OTH_CNT) as OTH_CNT,
+			sum(JO_CNT) as JO_CNT,sum(MEM_CNT) as MEM_CNT, sum(FM_CNT) as FM_CNT,sum(BLD_CNT) as BLD_CNT,
+			DISTRICT_CODE as CODE
+			from t_geo_agg
+			where district_code = p_code
+			group by DISTRICT_CODE;
+	elsif p_layerId = 5 then
+		open p_refCursor for
+			select sum(EST_CNT) as EST_CNT, sum(HOU_CNT) as HOU_CNT,sum(OTH_CNT) as OTH_CNT,
+			sum(JO_CNT) as JO_CNT,sum(MEM_CNT) as MEM_CNT, sum(FM_CNT) as FM_CNT,sum(BLD_CNT) as BLD_CNT, 
+			COLLECTION_CODE as CODE
+			from t_geo_agg
+			where collection_code = p_code
+			group by COLLECTION_CODE;
+	elsif p_layerId = 4 then
+		open p_refCursor for
+			select sum(EST_CNT) as EST_CNT, sum(HOU_CNT) as HOU_CNT,sum(OTH_CNT) as OTH_CNT,
+			sum(JO_CNT) as JO_CNT,sum(MEM_CNT) as MEM_CNT, sum(FM_CNT) as FM_CNT,sum(BLD_CNT) as BLD_CNT,
+			AREA_CODE as CODE
+			from t_geo_agg
+			where area_code = p_code
+			group by AREA_CODE;
+	elsif p_layerId = 3 then
+		open p_refCursor for
+			select sum(EST_CNT) as EST_CNT, sum(HOU_CNT) as HOU_CNT,sum(OTH_CNT) as OTH_CNT,
+			sum(JO_CNT) as JO_CNT,sum(MEM_CNT) as MEM_CNT, sum(FM_CNT) as FM_CNT,sum(BLD_CNT) as BLD_CNT, 
+			NEIGHBOURHOOD_CODE as CODE
+			from t_geo_agg
+			where NEIGHBOURHOOD_CODE = p_code
+			group by NEIGHBOURHOOD_CODE;
+	end if;
+END;
+/
+
+show errors;
+
+exit;
+/

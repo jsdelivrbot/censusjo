@@ -1,0 +1,201 @@
+<div class="contentpanel">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="claro">
+                        <div id="map" style="height: 550px">
+                            <div class="baseMapsButtons">
+                                <div class="row">
+                                    <div class="col-md-4 text-center btnBaseMap">
+                                        <div ng-click="SetBaseMaps(1)">
+                                            {{arialText}}
+                                            <div><img src="img/Arial.png"/></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 text-center btnBaseMap">
+                                        <div ng-click="SetBaseMaps(2)">
+                                            {{arialWithLabelsText}}
+                                            <div>
+                                                <img src="img/Arial-with-Labels.png">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 text-center btnBaseMap">
+                                        <div ng-click="SetBaseMaps(3)">
+                                            {{mapText}}
+                                            <div>
+                                                <img src="img/Roads.png">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div id="HomeButton">
+                                <div ng-click="GoHome()"><img width="32" height="32"
+                                                              src="img/mapIcons/Icons-Vector_Extent.svg"/></div>
+                            </div>
+                            <div class="ZoomIn">
+                                <div uib-tooltip="{{ZoomInText}}" tooltip-placement="left" id="zoomin">
+                                    <img width="32" height="32" src="img/mapIcons/Icons-Vector_Zoom-In.svg"/></div>
+                            </div>
+                            <div class="ZoomOut">
+                                <div uib-tooltip="{{ZoomOutText}}" tooltip-placement="left" id="zoomout">
+                                    <img width="32" height="32" src="img/mapIcons/Icons-Vector_Zoom-Out.svg"/></div>
+                            </div>
+                            <div class="Refresh">
+                                <div ng-click="refreshMap()" uib-tooltip="{{refreshText}}" tooltip-placement="left">
+                                    <img width="32" height="32" src="img/mapIcons/Icons-Vector_Refresh.svg"/></div>
+                            </div>
+                            <div class="ZoomPrev">
+                                <div uib-tooltip="{{PrevExtentText}}" tooltip-placement="left" id="zoomprev">
+                                    <img width="32" height="32" src="img/mapIcons/Icons-Vector_Back.svg"/></div>
+                            </div>
+                            <div class="ZoomNext">
+                                <div uib-tooltip="{{NextExtentText}}" tooltip-placement="left" id="zoomnext">
+                                    <img width="32" height="32" src="img/mapIcons/Icons-Vector_Next.svg"/></div>
+                            </div>
+                            <div class="Pan">
+                                <div uib-tooltip="{{PanText}}" tooltip-placement="left" id="pan">
+                                    <img width="32" height="32" src="img/mapIcons/Icons-Vector_Move.svg"/></div>
+                            </div>
+                            <div class="displayLayers" uib-popover-template="layersPopover.templateUrl"
+                                 popover-title="{{'ShowHideLayersText' | translate}}" popover-placement="left">
+                                <div uib-tooltip="{{'ShowHideLayersText' | translate}}" tooltip-placement="left"
+                                     id="deactivate">
+                                    <img width="32" height="32" src="img/mapIcons/Icons-Vector_Layers.svg"/></div>
+                            </div>
+                            <div class="StatisticalCharts">
+                                <div ng-click="ShowStatisticalReportPanel()" uib-tooltip="{{StatisticalReports}}"
+                                     tooltip-placement="left"
+                                     id="statisticalCharts">
+                                    <img width="32" height="32" src="img/mapIcons/Icons-Vector_Chart.svg"/>
+                                </div>
+                            </div>
+                            <div ng-show="globals.authenticated" class="printIcon" ng-click="createPrintDijit('Jordan Census')" popover-placement="left"
+                                 uib-popover-template="printPopover.printTemplate"
+                                 popover-trigger="manual">
+                                <div uib-tooltip="{{PrintText}}" tooltip-placement="left" id="print">
+                                    <img width="32" height="32" src="img/mapIcons/Icons-Vector_Print.svg"/></div>
+                            </div>
+                            <div class="results">
+                                <div id="resultPanel" class="shadow ui-widget-content ui-corner-all">
+                                    <button type="button" class="close" ng-click="CloseResultPanel()"
+                                            data-dismiss="modal">&times;</button>
+                                    <h3>{{SearchResultsText}}</h3>
+                                    <div class="wrap">
+                                        <div id="dvSearchResultPanel" ng-show="showSearchResultPanel">
+                                            <ul class="list-group scrollbar">
+                                                <li class="list-group-item" ng-repeat="service in ServicesResult"
+                                                    ng-click="GetServiceInfo(service, true)"><span
+                                                        class="glyphicon glyphicon-record"></span> {{service.EST_NAME}}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div id="dvNoServices" ng-show="showNoServices">
+                                            <ul class="list-group scrollbar">
+                                                <li class="list-group-item" ng-repeat="service in ServicesNoResult">
+                                                    <label>{{service.NAME}}</label><i class="badge numberIcon">{{service.COUNT}}</i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div id="dvNearestService" ng-show="isSearchNearestServiceEnabled">
+                                            <ul class="list-group scrollbar">
+                                                <li class="list-group-item" ng-repeat="service in NearestServicesResult"
+                                                    ng-click="GetServiceInfo(service, false)"><span
+                                                        class="glyphicon glyphicon-record"></span>
+                                                    {{service.attributes["EST_NAME"]}}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div id="dvStatistical" ng-show="showStatisticalReport">
+                                            <form role="form"
+                                                  ng-submit="GenerateStatisticalReports(SelectedReportId, SelectedStatisticalLayer, isPercentage)">
+                                                <div class="form-group">
+                                                    <label for="Layer">{{SelectLayerText}}</label>
+                                                    <select id="layer" ng-model="SelectedStatisticalLayer"
+                                                            ng-options="layer.id as lang === 'ar' ? layer.display_ar : layer.display_en for layer in StatisticalReportsLayers"
+                                                            class="form-control"
+                                                            required>
+                                                        <option value="">{{SelectText}}</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="ReportType">{{SelectReportText}}</label>
+                                                    <select id="ReportType" ng-model="SelectedReportId"
+                                                            ng-options="report.id as report[GetAttributeName()] for report in statisticalreports"
+                                                            class="form-control"
+                                                            required>
+                                                        <option value="">{{SelectText}}</option>
+                                                    </select>
+                                                </div>
+                                                <input type="checkbox" ng-init="isPercentage=false"
+                                                       ng-model="isPercentage"> {{percentageValue}}
+                                                <div class="text-center">
+                                                    <button class="submitButton btn-primary" type="submit">
+                                                        {{showText}}
+                                                    </button>
+                                                </div>
+                                            </form>
+                                            <div id="legendWrapper">
+                                                <ul ng-class="lang == 'ar' ? 'list-right' : 'list-left'"
+                                                    class="list-right gen-lis">
+                                                    <li ng-repeat="legendObj in statisticalReportsLegend">
+                                                        <i ng-style="{color: legendObj.color}"
+                                                           class=" fa fa-square "></i>
+                                                        <label class=" control-label">{{legendObj.label}}</label></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="dvLayerSettings">
+
+                        </div>
+                        <script type="text/ng-template" id="printTemplate.html">
+                            <div class="rows">
+                                <div class="col-md-2">
+                                    <i class="fa fa-print fa-2x"></i>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="print" uib-tooltip="{{PrintText}}" tooltip-placement="left"
+                                         id="print_button">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </script>
+                        <script type="text/ng-template" id="layersTemplate.html">
+                            <div id="showLayers" class="">
+                                <div ng-repeat="layer in LayersShowHide" class="form-group layersShowHide">
+                                    <label class="col-xs-8 control-label">{{lang === "ar" ? layer.display_ar :
+                                        layer.display_en}}</label>
+                                    <div class="col-xs-4 control-label">
+                                        <div class="onoffswitch">
+                                            <input type="checkbox" ng-click="ShowLayer($event, layer.strId)"
+                                                   name="chk{{layer.id}}" class="onoffswitch-checkbox"
+                                                   id="chk{{layer.id}}"/>
+                                            <label class="onoffswitch-label" for="chk{{layer.id}}">
+                                                <span class="onoffswitch-inner"></span>
+                                                <span class="onoffswitch-switch"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </script>
+                    </div>
+                </div>
+                <!-- col-md-6 -->
+            </div>
+            <!-- row -->
+        </div>
+        <!-- panel-body -->
+    </div>
+    <!-- panel -->
+</div>
+

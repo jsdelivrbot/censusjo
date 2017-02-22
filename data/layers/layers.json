@@ -1,0 +1,24 @@
+{
+    "layers": [
+        {"id": 9, "strId": "EstTable", "display_en": "Establishments", "display_ar": "المنشآت", "name_en": "EST_NAME", "name_ar": "EST_NAME", "isAdvancedSearch": false, "isStatisticalReport": false, "showHide": false},
+        {"id": 8, "strId": "GovernorateFeatureLayer", "display_en": "Governorate", "display_ar": "المحافظة", "name_en": "NAMEEN", "name_ar": "NAMEAR", "isAdvancedSearch": true, "isStatisticalReport": true, "showHide": false},
+        {"id": 7, "strId": "SubGovernorateFeatureLayer", "display_en": "District", "display_ar": "اللواء", "name_en": "NAMEEN", "name_ar": "NAMEAR", "isAdvancedSearch": true, "isStatisticalReport": true, "showHide": true},
+        {"id": 6, "strId": "DistrictFeatureLayer", "display_en": "Sub District", "display_ar": "حدود الأقضية", "name_en": "NAMEEN", "name_ar": "NAMEAR", "isAdvancedSearch": true, "isStatisticalReport": true, "showHide": true},
+        {"id": 5, "strId": "LocalityFeatureLayer", "display_en": "Locality", "display_ar": "حدود التجمعات السكانية", "name_en": "NAMEEN", "name_ar": "NAMEAR", "isAdvancedSearch": true, "isStatisticalReport": true, "showHide": true},
+        {"id": 4, "strId": "RegionsFeatureLayer", "display_en": "Area", "display_ar": "المنطقه", "name_en": "NAMEEN", "name_ar": "NAMEAR", "isAdvancedSearch": true, "isStatisticalReport": true, "showHide": true},
+        {"id": 3, "strId": "NeighborhoodsFeatureLayer", "display_en": "Neighbourhoods Region", "display_ar": "الأحياء", "name_en": "NAMEEN", "name_ar": "NAMEAR", "isAdvancedSearch": true, "isStatisticalReport": true, "showHide": true},
+        {"id": 2, "strId": "RoadsFeatureLayer", "display_en": "Roads", "display_ar": "الشوارع", "name_en": "NAMEEN", "name_ar": "NAMEAR", "isAdvancedSearch": false, "isStatisticalReport": false, "showHide": false},
+        {"id": 1, "strId": "LandmarksFeatureLayer", "display_en": "Landmarks", "display_ar": "المعالم", "name_en": "NAMEEN", "name_ar": "NAMEAR", "isAdvancedSearch": false, "isStatisticalReport": false, "showHide": false},
+        {"id": 0, "strId": "BuildingsFeatureLayer", "display_en": "Buildings", "display_ar": "المباني", "name_en": "NAMEEN", "name_ar": "NAMEAR", "isAdvancedSearch": false, "isStatisticalReport": false, "showHide": false}
+    ],
+    "searchTypes": [
+        {"id": 1, "name_ar": "معالم", "name_en": "Landmarks", "imgUrl": ""},
+        {"id": 2, "name_ar": "شوارع", "name_en": "Streets", "imgUrl": ""},
+        {"id": 3, "name_ar": "مؤشرات احصائية", "name_en": "Census Indicators", "imgUrl": ""}
+    ],
+    "colorArea": [
+        {"id": 1, "name_ar": "محتوى", "name_en": "Fill"},
+        {"id": 2, "name_ar": "حدود", "name_en": "Border"}
+    ]
+
+}

@@ -1,0 +1,75 @@
+/*
+ * Droid Arabic Naskh (Arabic) 
+ */
+ @font-face {
+  font-family: 'Droid Arabic Kufi';
+  font-style: normal;
+  font-weight: 400;
+  src: url(DroidKufi-Regular.eot);
+  src: url(DroidKufi-Regular.eot?#iefix) format('embedded-opentype'),
+       url(DroidKufi-Regular.woff2) format('woff2'),
+       url(DroidKufi-Regular.woff) format('woff'),
+       url(DroidKufi-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Droid Arabic Kufi';
+  font-style: normal;
+  font-weight: 700;
+  src: url(DroidKufi-Bold.eot);
+  src: url(DroidKufi-Bold.eot?#iefix) format('embedded-opentype'),
+       url(DroidKufi-Bold.woff2) format('woff2'),
+       url(DroidKufi-Bold.woff) format('woff'),
+       url(DroidKufi-Bold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Droid Arabic Naskh';
+  font-style: normal;
+  font-weight: 400;
+  src: url(DroidNaskh-Regular.eot);
+  src: url(DroidNaskh-Regular.eot?#iefix) format('embedded-opentype'),
+       url(DroidNaskh-Regular.woff2) format('woff2'),
+       url(DroidNaskh-Regular.woff) format('woff'),
+       url(DroidNaskh-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Droid Arabic Naskh';
+  font-style: normal;
+  font-weight: 700;
+  src: url(DroidNaskh-Bold.eot);
+  src: url(DroidNaskh-Bold.eot?#iefix) format('embedded-opentype'),
+       url(DroidNaskh-Bold.woff2) format('woff2'),
+       url(DroidNaskh-Bold.woff) format('woff'),
+       url(DroidNaskh-Bold.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'modza';
+	src: url('modzaReg.eot?#iefix') format('embedded-opentype'), url('modzaReg.woff') format('woff'), url('modzaReg.ttf') format('truetype'), url('modzaReg.svg#modzaReg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+ 
+@font-face {
+	font-family: 'modza';
+	src: url('modzaBd.eot?#iefix') format('embedded-opentype'), url('modzaBd.woff') format('woff'), url('modzaBd.ttf') format('truetype'), url('modzaBd.svg#modzaBd') format('svg');
+	font-weight: 700;
+	font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Montserrat-Regular'), url(montserrat400.woff) format('woff') , url(montserrat400.woff2) format('woff2') ,
+  url(montserrat400.ttf) format('truetype') , url('montserrat400.svg#montserrat700') format('svg');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Montserrat-Bold'), url(montserrat700.woff) format('woff') , url(montserrat700.woff2) format('woff2') ,
+  url(montserrat700.ttf) format('truetype') , url('montserrat700.svg#montserrat700') format('svg');
+}
+

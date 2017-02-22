@@ -1,0 +1,32 @@
+<form class="form-inline centerAll">
+    <div class="rows">
+        <div class=""><label class="lbls">{{SearchTypeText}}</label></div>
+        <div class="col-md-2">
+
+            <select id="drawingServices" ng-options="item.CODE as item[getField('serviceName')] for item in drawingServicesList"
+                    ng-model="drawingSelectedServices" class="form-control" multiple="multiple">
+            </select>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group toolsdrew ">
+                <ul class="widetool">
+                    <li ng-show="false" uib-tooltip="{{getField('drawByLine')}}" tooltip-placement="bottom" ng-class="{active: isSelectedDrawingToolIndex(1)}"><a href="#" ng-click="activateDrawingTool(0);setSelectedDrawingToolIndex(1);"><img src="img/lineups.svg"> </a></li>
+                    <li uib-tooltip="{{getField('drawByRectangle')}}" tooltip-placement="bottom" ng-class="{active: isSelectedDrawingToolIndex(2)}"><a href="#" ng-click="activateDrawingTool(1);setSelectedDrawingToolIndex(2);"><img src="img/sequer.svg"> </a></li>
+                    <li uib-tooltip="{{getField('drawByTriangle')}}" tooltip-placement="bottom" ng-class="{active: isSelectedDrawingToolIndex(3)}"><a href="#" ng-click="activateDrawingTool(2);setSelectedDrawingToolIndex(3);"><img src="img/triangle.svg"> </a></li>
+                    <li uib-tooltip="{{getField('drawByPolygon')}}" tooltip-placement="bottom" ng-class="{active: isSelectedDrawingToolIndex(4)}"><a href="#" ng-click="activateDrawingTool(3);setSelectedDrawingToolIndex(4);"><img src="img/linecr.svg"> </a></li>
+                    <li uib-tooltip="{{getField('drawByCircle')}}" tooltip-placement="bottom" ng-class="{active: isSelectedDrawingToolIndex(5)}" class="spl-no"><i> كم </i> <span class="">
+                <input class="numbs" min="0" value="0" type="number" ng-model="bufferDistance"> </span>
+                        <a href="#" ng-click="activateBuffer();setSelectedDrawingToolIndex(5);">
+                            <img src="img/cicle.svg"> </a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="form-group toolsdrew smallicon ">
+                <ul class="widetool">
+                    <li><a ng-click="cancelDrawing()" href="#"><img src="img/removed.svg"> </a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</form>

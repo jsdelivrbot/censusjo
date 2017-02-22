@@ -1,0 +1,186 @@
+.logopanel, .mainMenu, .nav-tabs > li {
+    float: left !important;
+}
+
+.lang {
+    float: right;
+}
+
+.helps {
+    float: right;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.topMenuall {
+    background: #364047 url("../img/topleft-green-en.svg") no-repeat scroll 101% bottom;
+}
+
+.nav-tabs li:last-child {
+    float: right !important;
+    right: 140px !important;
+    left: auto !important;
+}
+
+body .mainMenu li {
+    float: right;
+    margin: 0 10px 0 0;
+}
+
+.toptools {
+    left: 20px !important;
+    right: auto !important;
+
+}
+
+.dropdown-menu.notix {
+    left: 61px;
+    right: auto;
+
+}
+
+.dropdown-menu.notix::before {
+    content: "\f0d9";
+    left: -10px;
+    right: auto;
+    text-shadow: -2px 0 1px rgba(0, 0, 0, 0.3) !important;
+}
+
+.nice-select .option {
+    padding-left: 18px;
+    padding-right: 0;
+    text-align: left;
+}
+
+.formAll .form-group {
+    margin: 0 0 0 5px !important;
+    padding: 0;
+}
+
+.spacenext::after {
+    content: "\f105";
+    left: 2px;
+    right: auto
+}
+
+.nice-select .list {
+    left: 0;
+    right: auto;
+    text-align: left;
+}
+
+.select2-container--default[dir="rtl"] .select2-selection--multiple .select2-selection__choice, .select2-container--default[dir="rtl"] .select2-selection--multiple .select2-selection__placeholder, .select2-container--default[dir="rtl"] .select2-selection--multiple .select2-search--inline {
+    float: left !important;
+}
+
+.sec-head label {
+    color: #eee;
+    font-size: 12px;
+    margin-left: 22px;
+    padding: 0 4px;
+}
+
+.color-picker-swatch::before {
+    content: "\f0d9";
+    left: auto;
+    right: -9px;
+}
+
+.menutoggle {
+    float: left;
+    margin-right: 8px;
+    opacity: 0;
+}
+
+.menutoggle {
+    padding: 14px 15px 0 0;
+}
+
+.shapeIcon {
+    left: -35px;
+    right:auto;
+}
+
+body .side-panel {
+    z-index: 100;
+    POSITION: RELATIVE;
+}
+
+.settings {
+    float: left;
+}
+
+body .contentsofpanel .slimScrollBar {
+    left: auto !important;
+    right: 0 !important;
+}
+
+.widetool2 .tables {
+    margin-left: 18px;
+}
+
+.sets {
+    left: 28px !important;
+    right: auto;
+}
+
+body .sets::before {
+    content: “\f0d9”;
+    left: -8px;
+    text-shadow: -2px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+body .formAll .nice-select {
+    text-align: left !important;
+}
+
+.nice-select::after {
+    border-bottom: 2px solid #eee;
+    border-right: 2px solid #eee;
+    left: auto;
+    right: 12px;
+}
+
+.sets {
+    direction: ltr;
+    left: 28px !important;
+    right: auto !important;
+    text-align: left;
+}
+
+body .sets::before {
+    content: "\f0d9";
+}
+
+body .nice-select {
+    padding-left: 18px !important;
+    padding-right:30px  !important;
+    text-align: left !important;
+}
+
+.select2-container[dir="rtl"] .select2-selection--single .select2-selection__rendered {
+    padding-right: 20px!important;
+    padding-left: 8px!important;
+}
+
+.lbls {
+    float: left!important;
+}
+
+.select2-selection__arrow {
+    right: 1px!important;
+    left: auto!important;
+}
+
+.servicesSearch {
+    direction: ltr;
+}
+
+.closes {
+    float: right;
+}
+
+.toolsdrews h3 img {
+    margin-left: 0;
+    margin-right: 5px;
+}

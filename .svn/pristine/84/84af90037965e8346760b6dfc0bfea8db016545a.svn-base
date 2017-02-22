@@ -1,0 +1,272 @@
+<div class="leftpanel">
+    <div class="logopanel">
+        <h1><span> <img src="img/logo-2.png" width="239" height="49" alt="logo"></span></h1>
+    </div>
+    <!-- logopanel -->
+    <div class="leftpanelinner">
+
+
+        <!-- mainpanel -->
+
+        <!-- Nav tabs -->
+        <ul class="rightpanelSection nav nav-tabs nav-stacked nav-justified nav-bracket">
+            <li class="advancedSearch active"><a data-target="#dvAdvancedSearch" data-toggle="tab"></a></li>
+            <li class="numberOfServices"><a data-target="#dvSearchNoServices" data-toggle="tab"></a></li>
+            <li class="bufferService"><a data-target="#dvBufferSearch" data-toggle="tab"></a></li>
+            <li class="colorLayers"><a data-target="#dvSettings" data-toggle="tab"></a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="rightpanelContent tab-content">
+            <div class="tab-pane active" id="dvAdvancedSearch">
+                <h5>{{AdvancedSearchText}}</h5>
+                <ul class="chatuserlist">
+                    <li class="online">
+                        <div class="sidebar-message">
+                            <form class="form-horizontal" ng-submit="SearchForServices()" role="form">
+                                <required-dropdown></required-dropdown>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4"
+                                           for="GovernorateSelection">{{GovernorateText}}</label>
+
+                                    <div id="GovernorateSelection" class="col-sm-8">
+                                        <dropdown-normal class="sidedropdown" default-value="{{AllText}}"
+                                                         placeholder="{{AllText}}" has-icon='false'
+                                                         list="GovernoratesSearch" selected-value="SelectedGov"
+                                                         property-extension="{{GetLayerAttributeName()}}"
+                                                         property="attributes.{{GetLayerAttributeName()}}"
+                                                         ddl-change="OnGovernorateChanged"
+                                                         uib-popover-template="'requiredDropdown.html'"
+                                                         popover-is-open="invalid.isGovernorateSelected"
+                                                         popover-placement="bottom"
+                                                         popover-enable="invalid.isGovernorateSelected">
+                                        </dropdown-normal>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4"
+                                           for="DistrictSelection">{{SubGovernorateText}}</label>
+                                    <div class="col-sm-8" id="DistrictSelection">
+                                        <dropdown-normal class="sidedropdown" placeholder="{{AllText}}" has-icon='false'
+                                                         default-value="{{AllText}}"
+                                                         list="DistrictsSearch" selected-value="SelectedDistrict"
+                                                         property-extension="{{GetLayerAttributeName()}}"
+                                                         property="attributes.{{GetLayerAttributeName()}}"
+                                                         ddl-change="OnDistirctChanged">
+                                        </dropdown-normal>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4"
+                                           for="SubDistrictSelection">{{DistrictText}}</label>
+                                    <div id="SubDistrictSelection" class="col-sm-8">
+                                        <dropdown-normal class="sidedropdown" placeholder="{{AllText}}" has-icon='false'
+                                                         list="SubDistrictsSearch" selected-value="SelectedSubDistrict"
+                                                         default-value="{{AllText}}"
+                                                         property-extension="{{GetLayerAttributeName()}}"
+                                                         property="attributes.{{GetLayerAttributeName()}}"
+                                                         ddl-change="OnSubDistrictChanged">
+                                        </dropdown-normal>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4"
+                                           for="localitySelection">{{LocalityText}}</label>
+                                    <div id="localitySelection" class="col-sm-8">
+                                        <dropdown-normal class="sidedropdown" placeholder="{{AllText}}" has-icon='false'
+                                                         list="LocalitiesSearch" selected-value="SelectedLocality"
+                                                         default-value="{{AllText}}"
+                                                         property-extension="{{GetLayerAttributeName()}}"
+                                                         property="attributes.{{GetLayerAttributeName()}}"
+                                                         ddl-change="OnLocalityChanged">
+                                        </dropdown-normal>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4" for="RegionSelection">{{RegionText}}</label>
+                                    <div id="RegionSelection" class="col-sm-8">
+                                        <dropdown-normal class="sidedropdown" placeholder="{{AllText}}" has-icon='false'
+                                                         list="RegionsSearch" selected-value="SelectedArea"
+                                                         property-extension="{{GetLayerAttributeName()}}"
+                                                         property="attributes.{{GetLayerAttributeName()}}"
+                                                         default-value="{{AllText}}"
+                                                         ddl-change="OnRegionChanged">
+                                        </dropdown-normal>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4"
+                                           for="NeighbourhoodSelection">{{NeighbourhoodText}}</label>
+                                    <div id="NeighbourhoodSelection" class="col-sm-8">
+                                        <dropdown-normal class="sidedropdown" placeholder="{{AllText}}" has-icon='false'
+                                                         list="NeighbourhoodsSearch" selected-value="SelectedNH"
+                                                         property-extension="{{GetLayerAttributeName()}}"
+                                                         property="attributes.{{GetLayerAttributeName()}}"
+                                                         default-value="{{AllText}}"
+                                                         ddl-change="OnNeighbourhoodChanged">
+                                        </dropdown-normal>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4"
+                                           for="serviceSelection">{{ServiceTypesText}}</label>
+                                    <div id="serviceSelection" class="col-sm-8">
+                                        <dropdown-normal class="sidedropdown" placeholder="{{SelectText}}"
+                                                         has-icon='true'
+                                                         get-Imageurl="GetServicesSmallImages"
+                                                         list="ServicesList" selected-value="SelectedServiceId"
+                                                         property="{{lang === 'ar' ? 'NAME_AR' : 'NAME_EN'}}"
+                                                         ddlvalue="CODE"
+                                                         uib-popover-template="'requiredDropdown.html'"
+                                                         popover-is-open="invalid.isAdvancedSearchServiceSelected"
+                                                         popover-placement="bottom"
+                                                         popover-enable="invalid.isAdvancedSearchServiceSelected">
+                                        </dropdown-normal>
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="submitButton btn-primary"><i class="fa fa-search"></i>
+                                        <span>{{SearchText}}</span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- media -->
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-pane" id="dvSearchNoServices">
+                <h5>{{ServicesNumberText}}</h5>
+                <ul class="chatuserlist">
+                    <li class="online">
+                        <div class="sidebar-content">
+                            <form role="form" ng-submit="SearchNoOfServices()">
+                                <required-dropdown></required-dropdown>
+                                <div class="form-group">
+                                    <label class="col-sm-4" for="SearchType">{{SearchTypeText}}</label>
+                                    <dropdown-normal class="sidedropdown col-sm-8" id="SearchType"
+                                                     placeholder="{{SelectText}}" has-icon='false'
+                                                     list="layersForServices" selected-value="SelectedNoServiceLayerId"
+                                                     property="{{lang === 'ar' ? 'display_ar' : 'display_en'}}"
+                                                     ddlvalue="id"
+                                                     uib-popover-template="'requiredDropdown.html'"
+                                                     popover-is-open="invalid.isNoServiceLayerSelected"
+                                                     popover-placement="bottom"
+                                                     popover-enable="invalid.isNoServiceLayerSelected">
+                                    </dropdown-normal>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4" for="ServiceType">{{ServiceTypesText}}</label>
+                                    <dropdown-normal class="sidedropdown col-sm-8" id="ServiceType"
+                                                     placeholder="{{SelectText}}" has-icon='true'
+                                                     get-Imageurl="GetServicesSmallImages"
+                                                     list="ServicesList" selected-value="SelectedNoServiceCode"
+                                                     property="{{lang === 'ar' ? 'NAME_AR' : 'NAME_EN'}}"
+                                                     ddlvalue="CODE"
+                                                     uib-popover-template="'requiredDropdown.html'"
+                                                     popover-is-open="invalid.isNoServiceSelected"
+                                                     popover-placement="bottom"
+                                                     popover-enable="invalid.isNoServiceSelected">
+                                    </dropdown-normal>
+
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <label class="col-sm-4" for="fromNumber">{{FromText}}</label>
+                                        <input id="fromNumber" type="number" ng-model="fromNumber"
+                                               class="form-control numberText col-sm-8"
+                                               min="0"/>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="col-sm-4" for="toNumber">{{ToText}}</label>
+                                        <input id="toNumber" type="number" ng-model="toNumber"
+                                               class="form-control numberText col-sm-8"
+                                               min="1"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="text-center">
+                                        <button type="submit" class="submitButton btn-primary"><i class="fa fa-search">
+                                        </i> <span>{{SearchText}}</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-pane" id="dvBufferSearch">
+                <h5>{{SearchNearServices}}</h5>
+                <ul class="chatuserlist">
+                    <li class="online">
+                        <div class="sidebar-content">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label for="ServiceType">{{ServiceTypesText}}</label>
+                                    <dropdown-normal placeholder="{{SelectText}}" has-icon='true'
+                                                     get-Imageurl="GetServicesSmallImages"
+                                                     list="ServicesList" selected-value="SelectedNearestServiceType"
+                                                     property="{{lang === 'ar' ? 'NAME_AR' : 'NAME_EN'}}"
+                                                     ddlvalue="CODE">
+                                    </dropdown-normal>
+                                </div>
+                                <div class="form-group">
+                                    <label for="DistanceOfSearchKiloMeter">{{DistanceOfSearchKiloMeterText}}</label>
+                                    <input id="DistanceOfSearchKiloMeter" type="number" min="0"
+                                           ng-model="bufferDistance" class="form-control"/>
+                                </div>
+                                <div class="form-group setings-item row">
+                                    <label class="col-xs-8 control-label">{{ActivateBufferSearchText}}</label>
+                                    <div class="col-xs-4 control-label">
+                                        <div class="onoffswitch">
+                                            <input type="checkbox" ng-model="isSearchNearestServiceEnabled"
+                                                   name="chkEnableBufferSearch" class="onoffswitch-checkbox"
+                                                   id="chkEnableBufferSearch"/>
+                                            <label class="onoffswitch-label" for="chkEnableBufferSearch">
+                                                <span class="onoffswitch-inner"></span>
+                                                <span class="onoffswitch-switch"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-pane" id="dvSettings">
+                <div class="sidebar-content">
+                    <div class="form-group row">
+                        <label class="col-md-3 control-label">
+                            {{LayerText}}
+                        </label>
+                        <div class="col-md-9">
+                            <dropdown-normal class="sidedropdown layersForColorPicker" placeholder="{{SelectText}}" has-icon='false'
+                                             list="baseLayers" selected-value="selectedBaseColorLayer"
+                                             property="{{lang === 'ar' ? 'display_ar' : 'display_en'}}"
+                                             ddl-change="selectColorLayer" ddlvalue="id">
+                            </dropdown-normal>
+                        </div>
+                    </div>
+                </div>
+                <div id="dvColorPicker"></div>
+
+            </div>
+            <!-- tab-pane -->
+
+        </div>
+        <!-- tab-content -->
+
+        <ul class="nav nav-pills nav-stacked nav-bracket">
+
+            <li ng-show="globals.authenticated">
+
+
+
+            </li>
+        </ul>
+    </div>
+    <!-- leftpanelinner -->
+</div>
+<!-- leftpanel -->

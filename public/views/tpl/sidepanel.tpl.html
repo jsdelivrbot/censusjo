@@ -1,0 +1,85 @@
+<!-- start sidenavi wrapper//-->
+
+
+<div id="sideNavi">
+    <!-- sidenavi menu //-->
+    <div class="side-navi-item-default"></div>
+    <div class="side-navi-item item1">
+        <div>{{getField('SearchResultsText')}}</div>
+    </div>
+    <div class="side-navi-item item2">
+        <div>{{getField('indicatorResultsText')}}</div>
+    </div>
+    <!-- sidenavi data //-->
+    <div class="side-navi-data">
+        <div class="side-navi-tab">
+            <div class="contentsofpanel">
+                <div class="scroll-rightSide">
+                    <div class="shapeIcon"><img src="img/chart.svg"></div>
+                    <h3><i class="fa fa-bookmark"></i> {{getField('SearchResultsText')}} {{resultNos}}</h3>
+                    <div class="box-resultes">
+                        <div class="contentsright">
+                            <ul class="ulSearchResults" ng-show="searchType == 1">
+                                <li class="liSearchResult" ng-repeat="item in landmarksResult" ng-click="zoomToLandMark(item)">
+                                    <img ng-src="img/icons/service_{{item.ACTIVITY_CODE2}}.svg" class="landmarkIcon" />
+                                    <span>{{item[getField('EST_NAME')]}}</span>
+                                </li>
+                            </ul>
+                            <ul class="ulSearchResults" ng-show="searchType == 2">
+                                <li class="liSearchResult" ng-repeat="item in streetsResult" ng-click="zoomToSelected(item)">
+                                    <span>{{item.attributes[getField('LayerAttributeName')]}}</span>
+                                </li>
+                            </ul>
+                            <ul class="ulSearchResults" ng-show="searchType == 3">
+                                <li class="liSearchResult" ng-repeat="item in layersInfo" ng-click="zoomToSelected(item)">
+                                    <span>{{item.feature.attributes[GetLayerAttributeAliasName()] + "   ---   "  + item.layerName}}</span>
+                                </li>
+                            </ul>
+                            <ul class="list-group scrollbar" ng-show="searchType == 4">
+                                <li ng-click="zoomToLayer(service.CODE, service.layerId)" class="list-group-item" ng-repeat="service in servicesNoList">
+                                    <label>{{service.NAME}}</label><i class="badge numberIcon">{{service.COUNT}}</i>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="side-navi-tab">
+            <div class="contentsofpanel">
+                <div class="scroll6">
+                    <div class="widetool2">
+                        <div class="header-tools">
+                        <span class="settings">
+                            <a href="javascript:void(0);" ng-click="exportToExcel()"><i class="fa fa-file-excel-o"></i></a>
+                            <a ng-show="false" href="#"><i class="fa fa-file-pdf-o"></i></a>
+                        </span>
+                        </div>
+                        <div class="tables">
+                            <div ui-grid="indicatorGridOptions" dir="ltr" class="grid">
+                            </div>
+                        </div>
+                        <div class="header-tools">
+                        <span class="settings">
+                            <a href="#" aria-haspopup="true" class="dropdown-toggle"
+                               data-toggle="dropdown" id="setting"><i class="fa fa-cog"></i></a>
+                            <color-brewer class="dropdown-menu sets"></color-brewer>
+                        </span>
+                        </div>
+                        <div class="resulteNumberColor">
+                            <div class="rowNumber" ng-repeat="legendObj in legendArray">
+                            <span class="sNum">
+                                <svg width="20" height="20">
+                                <rect fill="{{legendObj.color}}" width="20" height="20" y="0"/>
+                                </svg></span> {{legendObj.label}}
+                            </div>
+                        </div>
+                        <div id="canvas-holder" style="width: 180px;">
+                            <canvas id="indicatorChart" width="180" height="180"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

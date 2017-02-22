@@ -1,0 +1,7 @@
+module.exports = {
+  orclDB : {
+    user : "sde",
+    password: "sde$$",
+    connectString: "orcl12c"
+  }
+}

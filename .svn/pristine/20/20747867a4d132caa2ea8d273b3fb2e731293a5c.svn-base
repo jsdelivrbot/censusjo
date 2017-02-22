@@ -1,0 +1,101 @@
+<section class="stages">
+    <!-- leftpanel -->
+    <side-panel></side-panel>
+    <div class="mainpanel">
+        <div class="contentpanel mapOuter">
+            <div class="panel panel-default mapInner">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mapsaria">
+                                <div class="toptools">
+                                    <a href="#" aria-expanded="false" aria-haspopup="true" data-toggle="dropdown"
+                                       id="toolsmap"><i class="fa fa-cog" aria-hidden="true"></i></a>
+
+                                    <ul class="mapToggleMenu dropdown-menu notix" aria-labelledby="toolsmap">
+
+                                        <li uib-tooltip="{{getField('goToBaseMap')}}" tooltip-placement="bottom"><img ng-click="GoHome()" src="img/tools1.svg"></li>
+                                        <li uib-tooltip="{{getField('ZOOM_IN')}}" tooltip-placement="bottom" id="zoomin"><img
+                                                src="img/tools2.svg"></li>
+                                        <li uib-tooltip="{{getField('ZOOM_OUT')}}" tooltip-placement="bottom"><img id="zoomout" src="img/tools3.svg"></li>
+                                        <li><img ng-click="refreshMap()" uib-tooltip="{{getField('refreshText')}}" tooltip-placement="bottom" src="img/tools4.svg"></li>
+                                        <li uib-tooltip="{{getField('PREV_EXTENT')}}" tooltip-placement="bottom"><img id="zoomprev" src="img/tools5.svg"></li>
+                                        <li uib-tooltip="{{getField('NEXT_EXTENT')}}" tooltip-placement="bottom"><img id="zoomnext" src="img/tools6.svg"></li>
+                                        <li uib-tooltip="{{getField('PAN')}}" tooltip-placement="bottom"><img id="pan" src="img/tools7.svg"></li>
+                                        <li uib-popover-template="layersPopover.templateUrl"
+                                            popover-title="{{'ShowHideLayersText' | translate}}"
+                                            popover-placement="bottom">
+                                            <div uib-tooltip="{{'ShowHideLayersText' | translate}}"
+                                                 tooltip-placement="bottom"><img src="img/tools8.svg"></div>
+                                        </li>
+                                        <li uib-tooltip="{{getField('measurementTools')}}" tooltip-placement="bottom" ng-click="showMeasurement()">
+                                            <img src="img/roles.svg"></li>
+                                    </ul>
+
+
+                                </div>
+                                <div class="downwheel">
+                                    <a href="#wheel2" class="wheel-button ne">
+                                        <span><i class="fa fa-location-arrow"></i></span>
+                                    </a>
+                                    <ul id="wheel2" data-angle="NE" class="wheel">
+                                        <li class="item aMap"><a ng-class="{active: isBaseMapIndex(1)}"
+                                                                 href="javascript:void(0)" ng-click="SetBaseMaps(1)">{{getField('arialText')}} </a>
+                                        </li>
+                                        <li class="item bMap"><a ng-class="{active: isBaseMapIndex(2)}"
+                                                                 href="javascript:void(0)" ng-click="SetBaseMaps(2)">
+                                            {{getField('arialWithLabelsText')}} </a></li>
+                                        <li class="item cMap"><a ng-class="{active: isBaseMapIndex(3)}"
+                                                                 href="javascript:void(0)" ng-click="SetBaseMaps(3)">{{getField('mapText')}} </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="tundra">
+                                    <div id="map"></div>
+                                    <div id="dvExtent"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- col-md-6 -->
+
+                    </div>
+                    <!-- row -->
+                </div>
+                <!-- panel-body -->
+            </div>
+            <!-- panel -->
+
+        </div>
+        <!-- mainpanel -->
+    </div>
+    <section style="display:none;" class="measureTools toolsdrews">
+
+        <h3> <img src="img/role.svg">Tools role <span style="cursor: pointer" onclick="$('.measureTools').toggle(false)" class="closes">X</span> </h3>
+
+        <div class="tobody"><measurement></measurement></div>
+
+    </section>
+    <script type="text/ng-template" id="layersTemplate.html">
+        <div id="showLayers" class="">
+            <div ng-repeat="layer in LayersShowHide" class="form-group layersShowHide">
+                <label class="col-xs-8 control-label">{{lang === "ar" ? layer.display_ar :
+                    layer.display_en}}</label>
+                <div class="col-xs-4 control-label">
+                    <div class="onoffswitch">
+                        <input type="checkbox" checked="checked" ng-click="ShowLayer($event, layer.strId)"
+                               name="chk{{layer.id}}" class="onoffswitch-checkbox"
+                               id="chk{{layer.id}}"/>
+                        <label class="onoffswitch-label" for="chk{{layer.id}}">
+                            <span class="onoffswitch-inner"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script type="text/ng-template" id="measurementTemplate.html">
+
+    </script>
+
+</section>

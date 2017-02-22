@@ -1,0 +1,6 @@
+#!/bin/bash
+for f in usp_*.sql;
+  do
+    echo "Processing $f file..";
+    sqlplus sde/'sde$$'@orcl12c @$f
+  done

@@ -1,0 +1,107 @@
+{
+  "_args": [
+    [
+      "oracledb@1.5.0",
+      "/Users/muhammad/projects/gis/censusjo"
+    ]
+  ],
+  "_from": "oracledb@1.5.0",
+  "_id": "oracledb@1.5.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/oracledb",
+  "_nodeVersion": "5.3.0",
+  "_npmUser": {
+    "email": "christopher.jones@oracle.com",
+    "name": "cjbj"
+  },
+  "_npmVersion": "3.3.12",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "oracledb",
+    "raw": "oracledb@1.5.0",
+    "rawSpec": "1.5.0",
+    "scope": null,
+    "spec": "1.5.0",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/oracledb/-/oracledb-1.5.0.tgz",
+  "_shasum": "67cbe412d47ae67d9a3b596d07a329fd32cf1743",
+  "_shrinkwrap": null,
+  "_spec": "oracledb@1.5.0",
+  "_where": "/Users/muhammad/projects/gis/censusjo",
+  "bugs": {
+    "url": "https://github.com/oracle/node-oracledb/issues"
+  },
+  "dependencies": {
+    "nan": "~2.1.0"
+  },
+  "description": "Oracle Database driver by Oracle Corp.",
+  "devDependencies": {
+    "async": "~0.9.0",
+    "mocha": "~2.2.5",
+    "should": "~6.0.1"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "67cbe412d47ae67d9a3b596d07a329fd32cf1743",
+    "tarball": "http://registry.npmjs.org/oracledb/-/oracledb-1.5.0.tgz"
+  },
+  "engines": {
+    "node": ">=0.10.28 <6"
+  },
+  "gypfile": true,
+  "homepage": "http://www.oracle.com/technetwork/database/database-technologies/scripting-languages/node_js/",
+  "keywords": [
+    "DB",
+    "Database",
+    "Node.js",
+    "OCI",
+    "Oracle",
+    "PL/SQL",
+    "SQL",
+    "adapter",
+    "add-on",
+    "binding",
+    "client",
+    "connection",
+    "connectivity",
+    "dboracle",
+    "driver",
+    "extension",
+    "interface",
+    "library",
+    "module",
+    "official",
+    "oracledb",
+    "plugin"
+  ],
+  "license": "Apache-2.0",
+  "main": "./index.js",
+  "maintainers": [
+    {
+      "name": "cjbj",
+      "email": "christopher.jones@oracle.com"
+    },
+    {
+      "name": "krismohan",
+      "email": "krishna.mohan@oracle.com"
+    }
+  ],
+  "name": "oracledb",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/oracle/node-oracledb.git"
+  },
+  "scripts": {
+    "install": "node-gyp rebuild",
+    "test": "mocha -R spec --timeout 10000 test/*.js",
+    "testWindows": "mocha -R spec --timeout 0 test\\*.js"
+  },
+  "version": "1.5.0"
+}

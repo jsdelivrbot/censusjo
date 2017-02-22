@@ -1,0 +1,66 @@
+create or replace function fn_lookup(
+  p_recordId in varchar2,
+  p_table_name in varchar2,
+  p_lang in varchar2)
+  return varchar2
+  is
+  p_result varchar2(255) := '';
+  begin
+    case
+      when LOWER(p_table_name) = 'governorates' then
+        if p_lang = 'ar' then
+          select namear into p_result from gis.Governorates
+          where govcode = p_recordId;
+        else
+          select nameen into p_result from gis.Governorates
+          where govcode = p_recordId;
+        end if;
+      when LOWER(p_table_name) = 'districts' then
+        if p_lang = 'ar' then
+          select namear into p_result from gis.Districts
+          where DISTCODE = p_recordId;
+        else
+          select nameen into p_result from gis.Districts
+          where DISTCODE = p_recordId;
+        end if;
+      when LOWER(p_table_name) = 'subdistricts' then
+        if p_lang = 'ar' then
+          select namear into p_result from gis.SubDistricts
+          where SUBDISTCODE = p_recordId;
+        else
+          select nameen into p_result from gis.SubDistricts
+          where SUBDISTCODE = p_recordId;
+        end if;
+      when LOWER(p_table_name) = 'localities' then
+        if p_lang = 'ar' then
+          select namear into p_result from gis.Localities
+          where LOCCODE = p_recordId;
+        else
+          select namear into p_result from gis.Localities
+          where LOCCODE = p_recordId;
+        end if;
+      when LOWER(p_table_name) = 'dosareas' then
+        if p_lang = 'ar' then
+          select namear into p_result from gis.DOSAreas
+          where areacode = p_recordId;
+        else
+          select nameen into p_result from gis.DOSAreas
+          where areacode = p_recordId;
+        end if;
+      when LOWER(p_table_name) = 'neighborhooddosprod' then
+        if p_lang = 'ar' then
+          select namear into p_result from gis.NeighborhoodDOSprod
+          where NHCODE = p_recordId;
+        else
+          select nameen into p_result from gis.NeighborhoodDOSprod
+          where NHCODE = p_recordId;
+        end if;
+    end case;
+    return p_result;
+  end;
+  /
+
+  show errors;
+
+  exit;
+  /

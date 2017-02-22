@@ -1,0 +1,40 @@
+<form class="form-auth" ng-submit="saveUser();">
+    <div class="container-fluid" id="main">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3" id="left">
+        <div class="boxs3">
+          <h2>Add/Update User Info</h2>
+          <!-- item list -->
+          <div class="panel panel-default">
+            <div class="panel-heading">User Info</div>
+          </div>
+          <div class="form-field">
+            <label for="firstName">First name</label>
+            <input type="text" class="form-control" ng-model="user.firstname" id="firstName" placeholder="First Name" />
+          </div>
+          <div class="form-field">
+          <label for="lastName">Last Name</label>
+          <input type="text" class="form-control" ng-model="user.lastname" id="lastName" placeholder="Last Name" />
+          </div>
+        	<div class="form-field">
+            <label for="username">Email</label>
+            <input type="username" class="form-control" ng-model="user.username" id="username" placeholder="User Name">
+          </div>
+          <div class="form-field">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" ng-model="user.password" id="password" placeholder="Password">
+          </div>
+          <div class="form-field">
+            <label for="roleId">Roles</label>
+            <select class="form-control" ng-model="user.roleid"  ng-options="role.id as role.name for role in roles">
+              <option value="">Select Roles</option>
+            </select>
+          </div>
+          <br />
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+          </div>
+      </div>
+    </div>
+  </div>
+</form>

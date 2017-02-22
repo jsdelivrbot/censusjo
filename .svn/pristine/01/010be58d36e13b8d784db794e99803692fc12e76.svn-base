@@ -1,0 +1,168 @@
+<div class="contentsright">
+    <div class="widetool2">
+        <div class="header-tools"><span class="settings"> <a href="#"> <i class="fa fa-file-excel-o"></i> </a> </span>
+        </div>
+        <div class="tables">
+            <div class="table-responsive">
+                <table class="table mb30 table-bordered">
+                    <thead>
+                    <tr>
+                        <th>المنطقة</th>
+                        <th>اعداد السكان</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="header-tools">
+            <h2> المحافظات </h2>
+            <span class="settings"> <a href="#" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown"
+                                       id="setting"><i class="fa fa-cog"></i></a>
+                <ul class="dropdown-menu sets" aria-labelledby="setting">
+                  <li>
+                    <div class=""> <span>عدد فصول البيانات :</span>
+                      <input class="setnum" type="number">
+                    </div>
+                  </li>
+                  <li class="dividers">
+                    <div id="scheme1" style="width: 160px;">
+                      <div id="ramps">
+                        <div class="ramp BuGn selected"><svg width="15" height="75">
+                          <rect fill="rgb(237,248,251)" width="15" height="15" y="0"/>
+                          <rect fill="rgb(178,226,226)" width="15" height="15" y="15"/>
+                          <rect fill="rgb(102,194,164)" width="15" height="15" y="30"/>
+                          <rect fill="rgb(44,162,95)" width="15" height="15" y="45"/>
+                          <rect fill="rgb(0,109,44)" width="15" height="15" y="60"/>
+                          </svg></div>
+                        <div class="ramp BuPu"><svg width="15" height="75">
+                          <rect fill="rgb(237,248,251)" width="15" height="15" y="0"/>
+                          <rect fill="rgb(179,205,227)" width="15" height="15" y="15"/>
+                          <rect fill="rgb(140,150,198)" width="15" height="15" y="30"/>
+                          <rect fill="rgb(136,86,167)" width="15" height="15" y="45"/>
+                          <rect fill="rgb(129,15,124)" width="15" height="15" y="60"/>
+                          </svg></div>
+                        <div class="ramp GnBu"><svg width="15" height="75">
+                          <rect fill="rgb(240,249,232)" width="15" height="15" y="0"/>
+                          <rect fill="rgb(186,228,188)" width="15" height="15" y="15"/>
+                          <rect fill="rgb(123,204,196)" width="15" height="15" y="30"/>
+                          <rect fill="rgb(67,162,202)" width="15" height="15" y="45"/>
+                          <rect fill="rgb(8,104,172)" width="15" height="15" y="60"/>
+                          </svg></div>
+                        <div class="ramp OrRd"><svg width="15" height="75">
+                          <rect fill="rgb(254,240,217)" width="15" height="15" y="0"/>
+                          <rect fill="rgb(253,204,138)" width="15" height="15" y="15"/>
+                          <rect fill="rgb(252,141,89)" width="15" height="15" y="30"/>
+                          <rect fill="rgb(227,74,51)" width="15" height="15" y="45"/>
+                          <rect fill="rgb(179,0,0)" width="15" height="15" y="60"/>
+                          </svg></div>
+                        <div class="ramp PuBu"><svg width="15" height="75">
+                          <rect fill="rgb(241,238,246)" width="15" height="15" y="0"/>
+                          <rect fill="rgb(189,201,225)" width="15" height="15" y="15"/>
+                          <rect fill="rgb(116,169,207)" width="15" height="15" y="30"/>
+                          <rect fill="rgb(43,140,190)" width="15" height="15" y="45"/>
+                          <rect fill="rgb(4,90,141)" width="15" height="15" y="60"/>
+                          </svg></div>
+                        <div class="ramp PuBuGn"><svg width="15" height="75">
+                          <rect fill="rgb(246,239,247)" width="15" height="15" y="0"/>
+                          <rect fill="rgb(189,201,225)" width="15" height="15" y="15"/>
+                          <rect fill="rgb(103,169,207)" width="15" height="15" y="30"/>
+                          <rect fill="rgb(28,144,153)" width="15" height="15" y="45"/>
+                          <rect fill="rgb(1,108,89)" width="15" height="15" y="60"/>
+                          </svg></div>
+                        <div class="ramp PuRd"><svg width="15" height="75">
+                          <rect fill="rgb(241,238,246)" width="15" height="15" y="0"/>
+                          <rect fill="rgb(215,181,216)" width="15" height="15" y="15"/>
+                          <rect fill="rgb(223,101,176)" width="15" height="15" y="30"/>
+                          <rect fill="rgb(221,28,119)" width="15" height="15" y="45"/>
+                          <rect fill="rgb(152,0,67)" width="15" height="15" y="60"/>
+                          </svg></div>
+                        <div class="ramp RdPu"><svg width="15" height="75">
+                          <rect fill="rgb(254,235,226)" width="15" height="15" y="0"/>
+                          <rect fill="rgb(251,180,185)" width="15" height="15" y="15"/>
+                          <rect fill="rgb(247,104,161)" width="15" height="15" y="30"/>
+                          <rect fill="rgb(197,27,138)" width="15" height="15" y="45"/>
+                          <rect fill="rgb(122,1,119)" width="15" height="15" y="60"/>
+                          </svg></div>
+                        <div class="ramp YlGn"><svg width="15" height="75">
+                          <rect fill="rgb(255,255,204)" width="15" height="15" y="0"/>
+                          <rect fill="rgb(194,230,153)" width="15" height="15" y="15"/>
+                          <rect fill="rgb(120,198,121)" width="15" height="15" y="30"/>
+                          <rect fill="rgb(49,163,84)" width="15" height="15" y="45"/>
+                          <rect fill="rgb(0,104,55)" width="15" height="15" y="60"/>
+                          </svg></div>
+                        <div class="ramp YlGnBu"><svg width="15" height="75">
+                          <rect fill="rgb(255,255,204)" width="15" height="15" y="0"/>
+                          <rect fill="rgb(161,218,180)" width="15" height="15" y="15"/>
+                          <rect fill="rgb(65,182,196)" width="15" height="15" y="30"/>
+                          <rect fill="rgb(44,127,184)" width="15" height="15" y="45"/>
+                          <rect fill="rgb(37,52,148)" width="15" height="15" y="60"/>
+                          </svg></div>
+                        <div class="ramp YlOrBr"><svg width="15" height="75">
+                          <rect fill="rgb(255,255,212)" width="15" height="15" y="0"/>
+                          <rect fill="rgb(254,217,142)" width="15" height="15" y="15"/>
+                          <rect fill="rgb(254,153,41)" width="15" height="15" y="30"/>
+                          <rect fill="rgb(217,95,14)" width="15" height="15" y="45"/>
+                          <rect fill="rgb(153,52,4)" width="15" height="15" y="60"/>
+                          </svg></div>
+                        <div class="ramp YlOrRd"><svg width="15" height="75">
+                          <rect fill="rgb(255,255,178)" width="15" height="15" y="0"/>
+                          <rect fill="rgb(254,204,92)" width="15" height="15" y="15"/>
+                          <rect fill="rgb(253,141,60)" width="15" height="15" y="30"/>
+                          <rect fill="rgb(240,59,32)" width="15" height="15" y="45"/>
+                          <rect fill="rgb(189,0,38)" width="15" height="15" y="60"/>
+                          </svg></div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+                </span></div>
+        <div class="resulteNumberColor">
+            <div class="rowNumber"> <span class="sNum"> <svg width="20" height="20">
+                  <rect fill="rgb(254,240,217)" width="20" height="20" y="0"/>
+                  </svg> </span> 1390
+            </div>
+            <div class="rowNumber"> <span class="sNum"> <svg width="20" height="20">
+                  <rect fill="rgb(253,204,138)" width="20" height="20" y="0"/>
+                  </svg> </span> 1390 - 2780
+            </div>
+            <div class="rowNumber"> <span class="sNum"> <svg width="20" height="20">
+                  <rect fill="rgb(227,74,51)" width="20" height="20" y="0"/>
+                  </svg> </span> 2780 - 4170
+            </div>
+            <div class="rowNumber"> <span class="sNum"><svg width="20" height="20">
+                  <rect fill="rgb(179,0,0)" width="20" height="20" y="0"/>
+                  </svg> </span> 4170 - 5560
+            </div>
+            <div class="rowNumber"> <span class="sNum"> <svg width="20" height="20">
+                  <rect fill="rgb(153,52,4)" width="20" height="20" y="0"/>
+                  </svg> </span> 6950 - 8340
+            </div>
+            <div class="rowNumber"> <span class="sNum"> <svg width="20" height="20">
+                  <rect fill="rgb(93,52,4)" width="20" height="20" y="0"/>
+                  </svg> </span> 8340 - 9730
+            </div>
+            <div class="rowNumber"> <span class="sNum"> <svg width="20" height="20">
+                  <rect fill="rgb(116,2,6)" width="20" height="20" y="0"/>
+                  </svg> </span> > 9730
+            </div>
+        </div>
+        <div class="header-tools"><span class="settings"> <i class="fa fa-expand"></i> </span></div>
+        <div id="canvas-holder" style="width: 180px;">
+            <canvas id="chart-area2" width="180" height="180"/>
+        </div>
+    </div>
+</div>

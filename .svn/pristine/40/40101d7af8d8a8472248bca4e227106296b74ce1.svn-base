@@ -1,0 +1,39 @@
+/*
+	$Author: majali $
+	$Id: usp_indicators_getResults.sql 54 2015-12-20 13:57:48Z majali $
+	$Rev: 54 $
+*/
+Create Or Replace Procedure usp_indicators_getResults
+	(
+	    p_chapterNo integer,
+	    p_variableName VARCHAR2,
+	    p_geoCode integer,
+		p_refCursor out SYS_REFCURSOR
+	)
+	AS
+    p_strSql VARCHAR2(255);
+    p_tableName VARCHAR2(255) := '';
+    p_geoBind VARCHAR2(255) := '';
+BEGIN
+
+    select table_name into p_tableName
+    from indict_lookup
+    where chapter_no = p_chapterNo;
+
+    p_geoBind :=  p_geoCode || '%';
+
+    p_strSql := 'select geocode, ' || p_variableName || ' as INDICATORVALUE from ' || p_tableName
+        || ' where to_char(geocode) like :geoBind'
+        || ' OR (length(to_char(geocode)) = 2 AND ' || p_geoCode || ' = -1 )';
+
+	open p_refCursor for
+		 p_strSql using p_geoBind;
+
+
+END;
+/
+
+show errors;
+
+exit;
+/

@@ -1,0 +1,77 @@
+<form class="centerAll" ng-submit="generalSearchSubmit()">
+    <div class="rows">
+        <div class="col-md-3 dvGeneralSearchInput">
+            <span ng-show="generalSelectedSearchType == 1 || generalSelectedSearchType == 2 || generalSelectedSearchType == 3" class="btnGeneralSearchSubmit">
+                <button class="btn btn-default sxc" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+            </span>
+            <label class="sr-only" for="txtServicesGeneral"> العام البحث</label>
+            <input ng-show="generalSelectedSearchType == 3" id="txtServicesGeneral" type="text"
+                   ng-model="generalServiceTextSearch"
+                   placeholder="{{getField('SearchText')}}..."
+                   uib-typeahead="serviceObj as serviceObj[getField('EST_NAME')] for serviceObj in generalSearchLayersDropDown($viewValue)"
+                   typeahead-on-select="generalZoomToLandmark($item, $model, $label, $event)"
+                   typeahead-popup-template-url="generalSearchServiceTemplate.html" class="form-control widesearch"/>
+
+            <input ng-show="generalSelectedSearchType == 1 || generalSelectedSearchType == 2" type="text"
+                   ng-model="generalSelectedSearch"
+                   placeholder="{{getField('SearchText')}}..."
+                   uib-typeahead="layerInfo as generalSelectedSearchType == 2 ? layerInfo.attributes[getField('LayerAttributeName')] : layerInfo.feature.attributes[GetLayerAttributeAliasName()] + '   ---   ' + layerInfo.layerName for layerInfo in generalSearchLayersDropDown($viewValue)"
+                   typeahead-on-select="generalZoomToSelected($item, $model, $label, $event)"
+                   typeahead-popup-template-url="generalSearchTemplate.html" class="form-control widesearch"/>
+
+        </div>
+        <div class="col-md-3 toolsdrew">
+            <ul class="widetool">
+                <li uib-tooltip="{{getField('searchLayers')}}" tooltip-placement="bottom" ng-class="{active: isSearchTypeSelected(1)}" ng-click="setSearchType(1)"><a href="#"><img
+                        src="img/layers2.svg"></a></li>
+                <li uib-tooltip="{{getField('searchStreets')}}" tooltip-placement="bottom" ng-click="setSearchType(2)" ng-class="{active: isSearchTypeSelected(2)}"><a href="#"><img
+                        src="img/street.svg"> </a></li>
+                <li uib-tooltip="{{getField('searchLandmarks')}}" tooltip-placement="bottom" ng-click="setSearchType(3)" ng-class="{active: isSearchTypeSelected(3)}">
+                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                        <img src="img/bulding.svg">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div ng-show="generalSelectedSearchType == 3" style="width: 300px" class="col-md-3">
+            <label class="sr-only" for="generalServicesTypes">{{getField('ServiceTypesText')}}</label>
+            <select id="generalServicesTypes" ng-options="item.CODE as item[getField('serviceName')] for item in generalServicesList"
+                    ng-model="generalSelectedServices" class="form-control servicesSearch" multiple="multiple">
+            </select>
+        </div>
+    </div>
+</form>
+<script type="text/ng-template" id="generalSearchTemplate.html">
+    <div class="custom-popup-wrapper"
+         ng-style="{top: position().top+'px', left: position().left+'px'}"
+         style="display: block;"
+         ng-show="isOpen() && !moveInProgress"
+         aria-hidden="{{!isOpen()}}">
+        <p class="message">{{TopDropDownSearchTitle}}</p>
+
+        <ul class="dropdown-menu" role="listbox">
+            <li ng-repeat="match in matches track by $index" ng-class="{active: isActive($index) }"
+                ng-mouseenter="selectActive($index)" ng-click="selectMatch($index)" role="option" id="{{::match.id}}">
+                <div uib-typeahead-match index="$index" match="match" query="query" template-url="templateUrl"></div>
+            </li>
+        </ul>
+    </div>
+</script>
+
+<script type="text/ng-template" id="generalSearchServiceTemplate.html">
+    <div class="custom-popup-wrapper"
+         ng-style="{top: position().top+'px', left: position().left+'px'}"
+         style="display: block;"
+         ng-show="isOpen() && !moveInProgress"
+         aria-hidden="{{!isOpen()}}">
+        <p class="message">{{TopDropDownSearchTitle}}</p>
+
+        <ul class="dropdown-menu" role="listbox">
+            <li ng-repeat="match in matches track by $index" ng-class="{active: isActive($index) }"
+                ng-mouseenter="selectActive($index)" ng-click="selectMatch($index)" role="option" id="{{::match.id}}">
+                <img ng-src="img/icons/service_{{match.model.ACTIVITY_CODE2}}.svg" class="landmarkIcon" />
+                <span uib-typeahead-match index="$index" match="match" query="query" template-url="templateUrl"></span>
+            </li>
+        </ul>
+    </div>
+</script>

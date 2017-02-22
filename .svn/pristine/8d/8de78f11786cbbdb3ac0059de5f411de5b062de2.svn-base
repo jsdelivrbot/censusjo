@@ -1,0 +1,22 @@
+<ul class=" sets" aria-labelledby="setting">
+    <ul class="scroll5">
+        <li>
+            <div class=""><span>{{classificationNoText}}</span>
+                <input class="setnum" type="number" min="3" max="11" ng-model="classNo">
+            </div>
+        </li>
+        <li class="dividers">
+            <div id="scheme1" class="div" style="width: 160px;">
+                <div id="ramps">
+                    <div ng-repeat="item in colorBrewer" class="ramp BuGn " ng-class="{'selected': item.name == chosenColorBrewer.name}">
+                        <svg id="{{item.name}}" ng-click="chooseColorBrewer(item.name)" width="15"
+                             height="{{classNo * 15}}">
+                            <rect ng-repeat="color in item.rgb"
+                                  fill="{{color}}" width="15" height="15" y="{{item.rgb.indexOf(color) * 15}}"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</ul>
