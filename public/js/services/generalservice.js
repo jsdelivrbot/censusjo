@@ -32,7 +32,7 @@ angular.module('gisapp')
                 "dir", "selectColorArea", "drawByLine", "drawByTriangle", "drawByRectangle",
                 "drawByPolygon", "drawByCircle", "searchLayers", "searchLandmarks", "searchStreets",
                 "chapterName", "IndicatorVal", "directorateName", "indicatorName", "fontFamily", "fontSize",
-                "fontWeight", "POP_MALE_TOT", "POP_FEMALE_TOT", "EST_NAME"]).then(function (translations) {
+                "fontWeight", "POP_MALE_TOT", "POP_FEMALE_TOT", "EST_NAME", "ContactUsText"]).then(function (translations) {
                 serviceTranslations.set(translations);
             });
 
@@ -73,7 +73,7 @@ angular.module('gisapp')
                     'BuildingCntText', 'HousingCntText', 'FamilyCntText', 'PopulationCtnText',
                     "drawByLine", "drawByTriangle", "drawByRectangle", "drawByPolygon", "drawByCircle",
                     "searchLayers", "searchLandmarks", "searchStreets", "chapterName", "IndicatorVal", "directorateName", "indicatorName",
-                    "fontFamily", "fontSize", "fontWeight", "POP_MALE_TOT", "POP_FEMALE_TOT","EST_NAME"]).then(function (translations) {
+                    "fontFamily", "fontSize", "fontWeight", "POP_MALE_TOT", "POP_FEMALE_TOT","EST_NAME", "ContactUsText"]).then(function (translations) {
                     serviceTranslations.set(translations);
                     $rootScope.$broadcast('languageChanged', $rootScope.lang);
                 });

@@ -23,6 +23,11 @@
                     </a>
                 </li>
                 <li>
+                  <a data-target="#dvContactUs" data-toggle="tab">
+                      <span><i class="fa fa-phone-square"></i></span> {{getField('ContactUsText')}}
+                  </a>
+                </li>
+                <li>
                     <a  ng-click="resetAll()" data-target="#dvSearchPanel" data-toggle="tab">
                         <span> <i class="fa fa-search"> </i> </span> </a>
                 </li>
@@ -62,6 +67,9 @@
                 <!-- printing panel -->
                 <div id="dvPrinting" class="tab-pane">
                     <print></print>
+                </div>
+                <div id="dvContactUs" class="tab-pane">
+                  <contact-us></contact-us>
                 </div>
                 <!-- search panel -->
                 <div id="dvSearchPanel" class="tab-pane">

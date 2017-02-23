@@ -5726,4 +5726,17 @@ layers-color label {
   width: 25px;
 }
 
+.contactUs {
+  color: #eee;
+  font-size: 14px;
+}
+
+.contactUs > div > table > tbody > tr > td {
+  padding: 5px;
+}
+
+.contactUs a{
+  color: #eee;
+}
+
 /********************* End My Custom Code *********************************/
